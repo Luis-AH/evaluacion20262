@@ -1,0 +1,74 @@
+﻿@model evaluacion20262.Models.SolicitudServicio
+
+@{
+    ViewData["Title"] = "Registrar Solicitud";
+}
+
+<div class="mt-4">
+    <h1 class="page-title">âž• <span class="highlight">Registrar</span> Solicitud</h1>
+    <p class="page-subtitle">Complete el formulario para registrar una nueva solicitud de servicio tÃ©cnico.</p>
+</div>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert-tecnogas mb-4">
+        âœ… @TempData["SuccessMessage"]
+    </div>
+}
+
+<div class="row">
+    <div class="col-lg-7">
+        <div class="glass-card">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                <div class="mb-3">
+                    <label asp-for="Cliente" class="form-label">ðŸ‘¤ Cliente</label>
+                    <input asp-for="Cliente" class="form-control" placeholder="Nombre completo del cliente" />
+                    <span asp-validation-for="Cliente" class="text-danger"></span>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="Telefono" class="form-label">ðŸ“ž TelÃ©fono</label>
+                        <input asp-for="Telefono" class="form-control" placeholder="Ej: 999-888-777" />
+                        <span asp-validation-for="Telefono" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="Distrito" class="form-label">ðŸ“ Distrito</label>
+                        <input asp-for="Distrito" class="form-control" placeholder="Ej: Miraflores" />
+                        <span asp-validation-for="Distrito" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="TipoServicio" class="form-label">ðŸ”§ Tipo de Servicio</label>
+                    <select asp-for="TipoServicio" class="form-select">
+                        <option value="">â€” Seleccione una opciÃ³n â€”</option>
+                        <option value="InstalaciÃ³n">ðŸ”© InstalaciÃ³n</option>
+                        <option value="Mantenimiento">ðŸ› ï¸ Mantenimiento</option>
+                        <option value="RevisiÃ³n">ðŸ” RevisiÃ³n</option>
+                        <option value="Fuga">âš ï¸ Fuga</option>
+                    </select>
+                    <span asp-validation-for="TipoServicio" class="text-danger"></span>
+                </div>
+
+                <div class="mb-4">
+                    <label asp-for="Descripcion" class="form-label">ðŸ“ DescripciÃ³n <small style="color: var(--text-muted);">(opcional)</small></label>
+                    <textarea asp-for="Descripcion" class="form-control" placeholder="Detalle adicional sobre la solicitud..."></textarea>
+                    <span asp-validation-for="Descripcion" class="text-danger"></span>
+                </div>
+
+                <div class="d-flex gap-3">
+                    <button type="submit" class="btn-tecnogas btn-primary-tecnogas">ðŸš€ Registrar Solicitud</button>
+                    <a asp-action="Index" class="btn-tecnogas btn-outline-tecnogas">ðŸ“‹ Ver Listado</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
