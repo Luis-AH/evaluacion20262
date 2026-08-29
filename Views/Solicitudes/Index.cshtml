@@ -1,0 +1,71 @@
+﻿@model IEnumerable<evaluacion20262.Models.SolicitudServicio>
+
+@{
+    ViewData["Title"] = "Listado de Solicitudes";
+}
+
+<div class="mt-4 d-flex justify-content-between align-items-start flex-wrap gap-3">
+    <div>
+        <h1 class="page-title">ðŸ“‹ <span class="highlight">Listado</span> de Solicitudes</h1>
+        <p class="page-subtitle">Todas las solicitudes de servicio tÃ©cnico registradas en el sistema.</p>
+    </div>
+    <a asp-action="Create" class="btn-tecnogas btn-primary-tecnogas">âž• Nueva Solicitud</a>
+</div>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert-tecnogas mb-4">
+        âœ… @TempData["SuccessMessage"]
+    </div>
+}
+
+@if (Model.Any())
+{
+    <div class="glass-card" style="overflow-x: auto;">
+        <table class="table-tecnogas">
+            <thead>
+                <tr>
+                    <th>Fecha</th>
+                    <th>Cliente</th>
+                    <th>TelÃ©fono</th>
+                    <th>Distrito</th>
+                    <th>Tipo</th>
+                    <th>DescripciÃ³n</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    var badgeClass = item.TipoServicio switch
+                    {
+                        "InstalaciÃ³n" => "badge-instalacion",
+                        "Mantenimiento" => "badge-mantenimiento",
+                        "RevisiÃ³n" => "badge-revision",
+                        "Fuga" => "badge-fuga",
+                        _ => "badge-instalacion"
+                    };
+
+                    <tr>
+                        <td style="white-space: nowrap;">@item.FechaRegistro.ToString("dd/MM/yyyy HH:mm")</td>
+                        <td><strong>@item.Cliente</strong></td>
+                        <td>@item.Telefono</td>
+                        <td>@item.Distrito</td>
+                        <td><span class="badge-servicio @badgeClass">@item.TipoServicio</span></td>
+                        <td style="max-width: 250px;">@(item.Descripcion ?? "â€”")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+else
+{
+    <div class="glass-card">
+        <div class="empty-state">
+            <div class="empty-state-icon">ðŸ“­</div>
+            <p class="empty-state-text">No hay solicitudes registradas aÃºn.</p>
+            <a asp-action="Create" class="btn-tecnogas btn-primary-tecnogas mt-3">âž• Crear la primera solicitud</a>
+        </div>
+    </div>
+}
+
