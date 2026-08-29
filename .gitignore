@@ -1,0 +1,23 @@
+## .NET
+bin/
+obj/
+*.db
+*.user
+*.suo
+.vs/
+*.DotSettings.user
+
+## NuGet
+*.nupkg
+**/[Pp]ackages/*
+
+## Build results
+[Dd]ebug/
+[Rr]elease/
+
+## OS
+Thumbs.db
+.DS_Store
+
+## Respaldo temporal (No subir)
+.temp-respaldo/
