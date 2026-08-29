@@ -1,8 +1,57 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Inicio";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="mt-4">
+    <h1 class="page-title">ðŸ”¥ Bienvenido a <span class="highlight">TecnoGas Hogar</span></h1>
+    <p class="page-subtitle">Sistema de gestiÃ³n de solicitudes de servicio tÃ©cnico de gas domÃ©stico.</p>
 </div>
+
+<div class="stats-grid">
+    <div class="stat-card">
+        <div class="stat-value">ðŸ”©</div>
+        <div class="stat-label">InstalaciÃ³n</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-value">ðŸ› ï¸</div>
+        <div class="stat-label">Mantenimiento</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-value">ðŸ”</div>
+        <div class="stat-label">RevisiÃ³n</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-value">âš ï¸</div>
+        <div class="stat-label">Fuga</div>
+    </div>
+</div>
+
+<div class="row g-4">
+    <div class="col-md-6">
+        <div class="glass-card">
+            <h4 style="font-family: var(--font-display); font-weight: 700; margin-bottom: 0.75rem;">
+                âž• Registrar Solicitud
+            </h4>
+            <p style="color: var(--text-secondary); margin-bottom: 1.25rem;">
+                Complete el formulario para generar una nueva solicitud de servicio tÃ©cnico para un cliente.
+            </p>
+            <a asp-controller="Solicitudes" asp-action="Create" class="btn-tecnogas btn-primary-tecnogas">
+                Ir al Formulario
+            </a>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="glass-card">
+            <h4 style="font-family: var(--font-display); font-weight: 700; margin-bottom: 0.75rem;">
+                ðŸ“‹ Ver Solicitudes
+            </h4>
+            <p style="color: var(--text-secondary); margin-bottom: 1.25rem;">
+                Consulte el listado completo de solicitudes registradas, ordenadas por fecha.
+            </p>
+            <a asp-controller="Solicitudes" asp-action="Index" class="btn-tecnogas btn-outline-tecnogas">
+                Ver Listado
+            </a>
+        </div>
+    </div>
+</div>
+
